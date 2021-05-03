@@ -212,6 +212,38 @@ paths:
                 $ref: '#/components/schemas/teamsList'
         '404':
           description: invalid syntax
+  
+  /addGamesToSystem:
+   post:
+    tags:
+      - add games to system
+    summary: add games to system
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gamesList'
+    responses:
+      '201':
+        description: game was added to the system
+      '500':
+        description: problem in server
+  
+  /addscoreToGame:
+   post:
+    tags:
+      - add score to games
+    summary: add score to games
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gamesList'
+    responses:
+      '201':
+        description: score was added to the game
+      '500':
+        description: problem in server
 
 servers:
   # Added by API Auto Mocking Plugin
@@ -464,7 +496,7 @@ components:
               example: https://cloudinary.com/abc
         games:
           type: array
-          description: array of all tram's games
+          description: array of all team's games
           items:
             type: object
             description: game object
@@ -728,7 +760,7 @@ components:
                 example: https://cloudinary.com/abc
           games:
             type: array
-            description: array of all tram's games
+            description: array of all team's games
             items:
               type: object
               description: game object
@@ -784,3 +816,61 @@ components:
                       event_description:
                         type: string
                         example: goal by messi
+    gamesList:
+      type: array
+      description: array of all team's games
+      items:
+        type: object
+        description: game object
+        properties:
+          id:
+            type: integer
+            example: 1
+          hometeam:
+              type: string
+              description: the name of home team
+              example: Real Madrid
+          awayteam:
+            type: string
+            description: the name of away team
+            example: Barcelona
+          date: 
+            type: string
+            description: the date of the game
+            example: 5/2/09
+          hour:
+            type: string
+            description: the hour of the game
+            example: 21:45
+          stadium:
+            type: string
+            description: the stadium of the game
+            example: Santiago Bernabeu
+          result:
+            type: string
+            description: the result of the game
+            example: 2-6
+          events_schedule:
+            type: array
+            description: array of all events at the game
+            items:
+              type: object
+              description: array of all events at the game
+              properties:
+                id:
+                  type: integer
+                  example: 1                  
+                date: 
+                  type: string
+                  description: the date of the game
+                  example: 5/2/09
+                hour:
+                  type: string
+                  description: the hour of the game
+                  example: 21:45
+                min_in_game:
+                  type: integer
+                  example: 4
+                event_description:
+                  type: string
+                  example: goal by messi
