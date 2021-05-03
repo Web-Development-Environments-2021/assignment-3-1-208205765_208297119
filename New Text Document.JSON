@@ -37,6 +37,7 @@ paths:
           description: successful user register
         '400':
           description: one or more items were invalid
+  
   /leagueDetails:
     get:
       tags:
@@ -98,7 +99,8 @@ paths:
                 $ref: '#/components/schemas/weekGames'
         '404':
           description: could'nt retrieve the data
-	/playerPage:
+  
+  /playerPage:
     get:
       tags:
         - playerPage
@@ -127,6 +129,7 @@ paths:
                 $ref: '#/components/schemas/coachDetails'
         '404':
           description: details weren't found
+  
   /addToFavorites:
      post:
       tags:
@@ -142,6 +145,7 @@ paths:
           description: player was added to favorites list
         '500':
           description: problem in server
+  
   /playerSearch:
     get:
       tags: 
@@ -207,8 +211,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/teamsList'
         '404':
-          description: invalid syntax	  
-    
+          description: invalid syntax
 
 servers:
   # Added by API Auto Mocking Plugin
@@ -535,7 +538,7 @@ components:
                 event_description:
                   type: string
                   example: goal by messi
-	playerDetails:
+    playerDetails:
       type: object
       description: player's object
       properties:
