@@ -1,0 +1,260 @@
+openapi: 3.0.0
+info:
+  version: 3.0.3
+  title: Project_3.1
+  description: Project_3.1 api
+paths:
+  /login:
+    post:
+      tags: 
+        - users
+      summary: user log in
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '400':
+          description: UserName or password is invalid
+        '201':
+          description: successfuly logged in
+            
+  /register:
+    post:
+      tags: 
+        - users
+      summary: user register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+      responses:
+        '201':
+          description: successful user register
+        '400':
+          description: one or more items were invalid
+  /leagueDetails:
+    get:
+      tags:
+        - main page
+      summary: league details
+      description: show league name, current season, current stage, details of next planned game
+      responses:
+        '200':
+          description: league's data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mainPageLeagueDetails'
+        '404':
+          description: could'nt retrieve the data
+            
+  /usersGames:
+    get:
+      tags:
+        - main page
+      summary: 3 favourite games of user
+      description: 3 favourite games of user that haven't occured yet
+      responses:
+        '200':
+          description: data of games
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mainPageGames'
+        '404':
+          description: could'nt retrieve the data
+          
+  #/associationTeamCard:
+    
+
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/ronny5423/Project_3.1/3.0.3
+components:
+  schemas:
+    Login:
+      type: object
+      description: user info for login
+      properties:
+        username:
+          type: string
+          minLength: 3
+          maxLength: 8
+          description: username must be between 3 to 8 chars and only letters
+          example: abba
+        password:
+          type: string
+          minLength: 5
+          maxLength: 10
+          format: password
+          description: password between 5 to 10 chars, must consist of 1 digit and 1 special char
+          example: 123456!
+    Register:
+      type: object
+      description: Model containing user info for register
+      properties:
+        username:
+          type: string
+          minLength: 3
+          maxLength: 8
+          description: username must be between 3 to 8 chars and only letters
+          example: abba
+        firstname:
+          type: string
+          description: user first name
+          example: Ron
+        lastname:
+          type: string
+          description: user last name
+          example: Tyntarev
+        country:
+          type: string
+          description: user's country
+          example: Israel
+        password:
+          type: string
+          minLength: 5
+          maxLength: 10
+          format: password
+          description: password between 5 to 10 chars, must consist of 1 digit and 1 special char
+          example: 123456!
+        email:
+          type: string
+          format: email
+          description: user's email
+          example: abc@gmail.com
+        image-url:
+          type: string
+          format: URL
+          description: url for user's image
+          example: https://cloudinary.com/abc
+    mainPageLeagueDetails:
+      type: object
+      description: league name,current season, current stage, next planned game
+      properties:
+        leaguename:
+          type: string
+          description: league's name
+          example: SuperLiga
+        currentseason:
+          type: string
+          description: current league's season
+          example: 2020/2021
+        currentstage:
+          type: string
+          description: current stage of current season
+          example: 25
+        nextplannedgame:
+          type: object
+          description: next planned game
+          properties:
+            hometeam:
+                type: string
+                description: the name of home team
+                example: Real Madrid
+            awayteam:
+              type: string
+              description: the name of away team
+              example: Barcelona
+            date: 
+              type: string
+              description: the date of the game
+              example: 5/2/09
+            result:
+              type: string
+              description: the result of the game
+              example: 2-6
+    mainPageGames:
+      type: array
+      description: array of 3 favourite games
+      items:
+        type: object
+        description: game object
+        properties:
+          hometeam:
+              type: string
+              description: the name of home team
+              example: Real Madrid
+          awayteam:
+            type: string
+            description: the name of away team
+            example: Barcelona
+          date: 
+            type: string
+            description: the date of the game
+            example: 5/2/09
+          result:
+            type: string
+            description: the result of the game
+            example: 2-6
+    team:
+      type: object
+      description: team's object with all teams players and the coach
+      properties:
+        players:
+          type: array
+          items:
+            type: object
+            description: player's object
+            properties:
+              full_name:
+                type: string
+                description: full name of the player
+                example: Lionel Messi
+              team_Name:
+                type: string
+                description: name of the player team
+                example: Barcelona
+              pic:
+                type: string
+                description: url of the player's picture
+                example: https://cloudinary.com/abc
+              position_number:
+                type: integer
+                description: position number
+                example: 9
+        coach:
+          type: object
+          description: coach's object
+          properties:
+            full_name:
+              type: string
+              description: full name of the coach
+              example: Pep Guardiola
+            team_Name:
+              type: string
+              description: coach team name
+              example: Manchester City
+            pic:
+              type: string
+              description: url of the coach's picture
+              example: https://cloudinary.com/abc
+        games:
+          type: array
+          description: array of all tram's games
+          items:
+            type: object
+            description: game object
+            properties:
+              hometeam:
+                  type: string
+                  description: the name of home team
+                  example: Real Madrid
+              awayteam:
+                type: string
+                description: the name of away team
+                example: Barcelona
+              date: 
+                type: string
+                description: the date of the game
+                example: 5/2/09
+              result:
+                type: string
+                description: the result of the game
+                example: 2-6
