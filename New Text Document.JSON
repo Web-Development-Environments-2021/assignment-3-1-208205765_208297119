@@ -240,6 +240,9 @@ components:
       type: object
       description: Model containing user info for register
       properties:
+        id:
+          type: integer
+          example: 1
         username:
           type: string
           minLength: 3
@@ -277,8 +280,11 @@ components:
           example: https://cloudinary.com/abc
     mainPageLeagueDetails:
       type: object
-      description: league name,current season, current stage, next planned game
+      description: league name, current season, current stage, next planned game
       properties:
+        id:
+          type: integer
+          example: 1
         leaguename:
           type: string
           description: league's name
@@ -295,6 +301,9 @@ components:
           type: object
           description: game object
           properties:
+            id:
+              type: integer
+              example: 1
             hometeam:
                 type: string
                 description: the name of home team
@@ -326,6 +335,9 @@ components:
                 type: object
                 description: array of all events at the game
                 properties:
+                  id:
+                    type: integer
+                    example: 1                
                   date: 
                     type: string
                     description: the date of the game
@@ -347,6 +359,9 @@ components:
         type: object
         description: game object
         properties:
+          id:
+            type: integer
+            example: 1
           hometeam:
               type: string
               description: the name of home team
@@ -378,6 +393,9 @@ components:
               type: object
               description: array of all events at the game
               properties:
+                id:
+                  type: integer
+                  example: 1
                 date: 
                   type: string
                   description: the date of the game
@@ -394,14 +412,21 @@ components:
                   example: goal by messi
     team:
       type: object
-      description: team's object with all teams players and the coach
+      description: team's object with all team players, gamed and the coach.
       properties:
+        id:
+          type: integer
+          example: 1
         players:
           type: array
           items:
             type: object
             description: player's object
             properties:
+              id:
+                type: integer
+                description: player's id
+                example: 1
               full_name:
                 type: string
                 description: full name of the player
@@ -422,6 +447,9 @@ components:
           type: object
           description: coach's object
           properties:
+            id:
+              type: integer
+              example: 1
             full_name:
               type: string
               description: full name of the coach
@@ -441,6 +469,9 @@ components:
             type: object
             description: game object
             properties:
+              id:
+                type: integer
+                example: 1
               hometeam:
                   type: string
                   description: the name of home team
@@ -472,6 +503,9 @@ components:
                   type: object
                   description: array of all events at the game
                   properties:
+                    id:
+                      type: integer
+                      example: 1                  
                     date: 
                       type: string
                       description: the date of the game
@@ -493,6 +527,9 @@ components:
         type: object
         description: game object
         properties:
+          id:
+            type: integer
+            example: 1
           hometeam:
               type: string
               description: the name of home team
@@ -524,6 +561,9 @@ components:
               type: object
               description: array of all events at the game
               properties:
+                id:
+                  type: integer
+                  example: 1              
                 date: 
                   type: string
                   description: the date of the game
@@ -569,6 +609,9 @@ components:
       type: object
       description: coach's object
       properties:
+        id:
+          type: integer
+          example: 1      
         full_name:
           type: string
           description: full name of the coach
@@ -614,6 +657,9 @@ components:
         type: object
       description: coach's object
       properties:
+        id:
+          type: integer
+          example: 1      
         full_name:
           type: string
           description: full name of the coach
@@ -630,14 +676,21 @@ components:
       type: array
       items:
         type: object
-        description: team's object with all teams players and the coach
+        description: team's objects with all teams players, gamed and coaches
         properties:
+          id:
+            type: integer
+            example: 1
           players:
             type: array
             items:
               type: object
               description: player's object
               properties:
+                id:
+                  type: integer
+                  description: player's id
+                  example: 1
                 full_name:
                   type: string
                   description: full name of the player
@@ -654,3 +707,80 @@ components:
                   type: integer
                   description: position number
                   example: 9
+          coach:
+            type: object
+            description: coach's object
+            properties:
+              id:
+                type: integer
+                example: 1
+              full_name:
+                type: string
+                description: full name of the coach
+                example: Pep Guardiola
+              team_Name:
+                type: string
+                description: coach team name
+                example: Manchester City
+              pic:
+                type: string
+                description: url of the coach's picture
+                example: https://cloudinary.com/abc
+          games:
+            type: array
+            description: array of all tram's games
+            items:
+              type: object
+              description: game object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                hometeam:
+                    type: string
+                    description: the name of home team
+                    example: Real Madrid
+                awayteam:
+                  type: string
+                  description: the name of away team
+                  example: Barcelona
+                date: 
+                  type: string
+                  description: the date of the game
+                  example: 5/2/09
+                hour:
+                  type: string
+                  description: the hour of the game
+                  example: 21:45
+                stadium:
+                  type: string
+                  description: the stadium of the game
+                  example: Santiago Bernabeu
+                result:
+                  type: string
+                  description: the result of the game
+                  example: 2-6
+                events_schedule:
+                  type: array
+                  description: array of all events at the game
+                  items:
+                    type: object
+                    description: array of all events at the game
+                    properties:
+                      id:
+                        type: integer
+                        example: 1                  
+                      date: 
+                        type: string
+                        description: the date of the game
+                        example: 5/2/09
+                      hour:
+                        type: string
+                        description: the hour of the game
+                        example: 21:45
+                      min_in_game:
+                        type: integer
+                        example: 4
+                      event_description:
+                        type: string
+                        example: goal by messi
