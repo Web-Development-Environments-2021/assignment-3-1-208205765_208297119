@@ -69,7 +69,35 @@ paths:
         '404':
           description: could'nt retrieve the data
           
-  #/associationTeamCard:
+  /associationTeamCard:
+    get:
+      tags: 
+        - team page
+      summary: show team details
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/team'
+        '404':
+          description: could'nt retrieve the data
+  
+  /game_week:
+    get:
+      tags: 
+        - game week page
+      summary: show all game week details
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/weekGames'
+        '404':
+          description: could'nt retrieve the data
     
 
 servers:
@@ -152,7 +180,7 @@ components:
           example: 25
         nextplannedgame:
           type: object
-          description: next planned game
+          description: game object
           properties:
             hometeam:
                 type: string
@@ -166,10 +194,39 @@ components:
               type: string
               description: the date of the game
               example: 5/2/09
+            hour:
+              type: string
+              description: the hour of the game
+              example: 21:45
+            stadium:
+              type: string
+              description: the stadium of the game
+              example: Santiago Bernabeu
             result:
               type: string
               description: the result of the game
               example: 2-6
+            events_schedule:
+              type: array
+              description: array of all events at the game
+              items:
+                type: object
+                description: array of all events at the game
+                properties:
+                  date: 
+                    type: string
+                    description: the date of the game
+                    example: 5/2/09
+                  hour:
+                    type: string
+                    description: the hour of the game
+                    example: 21:45
+                  min_in_game:
+                    type: integer
+                    example: 4
+                  event_description:
+                    type: string
+                    example: goal by messi
     mainPageGames:
       type: array
       description: array of 3 favourite games
@@ -189,10 +246,39 @@ components:
             type: string
             description: the date of the game
             example: 5/2/09
+          hour:
+            type: string
+            description: the hour of the game
+            example: 21:45
+          stadium:
+            type: string
+            description: the stadium of the game
+            example: Santiago Bernabeu
           result:
             type: string
             description: the result of the game
             example: 2-6
+          events_schedule:
+            type: array
+            description: array of all events at the game
+            items:
+              type: object
+              description: array of all events at the game
+              properties:
+                date: 
+                  type: string
+                  description: the date of the game
+                  example: 5/2/09
+                hour:
+                  type: string
+                  description: the hour of the game
+                  example: 21:45
+                min_in_game:
+                  type: integer
+                  example: 4
+                event_description:
+                  type: string
+                  example: goal by messi
     team:
       type: object
       description: team's object with all teams players and the coach
@@ -254,7 +340,88 @@ components:
                 type: string
                 description: the date of the game
                 example: 5/2/09
+              hour:
+                type: string
+                description: the hour of the game
+                example: 21:45
+              stadium:
+                type: string
+                description: the stadium of the game
+                example: Santiago Bernabeu
               result:
                 type: string
                 description: the result of the game
                 example: 2-6
+              events_schedule:
+                type: array
+                description: array of all events at the game
+                items:
+                  type: object
+                  description: array of all events at the game
+                  properties:
+                    date: 
+                      type: string
+                      description: the date of the game
+                      example: 5/2/09
+                    hour:
+                      type: string
+                      description: the hour of the game
+                      example: 21:45
+                    min_in_game:
+                      type: integer
+                      example: 4
+                    event_description:
+                      type: string
+                      example: goal by messi
+    weekGames:
+      type: array
+      description: array of all weeks games
+      items:
+        type: object
+        description: game object
+        properties:
+          hometeam:
+              type: string
+              description: the name of home team
+              example: Real Madrid
+          awayteam:
+            type: string
+            description: the name of away team
+            example: Barcelona
+          date: 
+            type: string
+            description: the date of the game
+            example: 5/2/09
+          hour:
+            type: string
+            description: the hour of the game
+            example: 21:45
+          stadium:
+            type: string
+            description: the stadium of the game
+            example: Santiago Bernabeu
+          result:
+            type: string
+            description: the result of the game
+            example: 2-6
+          events_schedule:
+            type: array
+            description: array of all events at the game
+            items:
+              type: object
+              description: array of all events at the game
+              properties:
+                date: 
+                  type: string
+                  description: the date of the game
+                  example: 5/2/09
+                hour:
+                  type: string
+                  description: the hour of the game
+                  example: 21:45
+                min_in_game:
+                  type: integer
+                  example: 4
+                event_description:
+                  type: string
+                  example: goal by messi
