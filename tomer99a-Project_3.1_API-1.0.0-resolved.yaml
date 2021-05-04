@@ -1,0 +1,741 @@
+---
+openapi: 3.0.0
+info:
+  title: Project_3.1
+  description: Project_3.1 api
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/tomer99a/Project_3.1_API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://virtserver.swaggerhub.com/ronny5423/Project_3.1/3.0.3
+  description: SwaggerHub API Auto Mocking
+paths:
+  /login:
+    post:
+      tags:
+      - users
+      summary: user log in
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      responses:
+        "400":
+          description: UserName or password is invalid
+        "201":
+          description: successfuly logged in
+  /register:
+    post:
+      tags:
+      - users
+      summary: user register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+        required: true
+      responses:
+        "201":
+          description: successful user register
+        "400":
+          description: one or more items were invalid
+  /leagueDetails:
+    get:
+      tags:
+      - main page
+      summary: league details
+      description: show league name, current season, current stage, details of next planned game
+      responses:
+        "200":
+          description: league's data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mainPageLeagueDetails'
+        "404":
+          description: could'nt retrieve the data
+  /usersGames:
+    get:
+      tags:
+      - main page
+      summary: 3 favourite games of user
+      description: 3 favourite games of user that haven't occured yet
+      responses:
+        "200":
+          description: data of games
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mainPageGames'
+        "404":
+          description: could'nt retrieve the data
+  /associationTeamCard:
+    get:
+      tags:
+      - team page
+      summary: show team details
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/team'
+        "404":
+          description: could'nt retrieve the data
+  /game_week:
+    get:
+      tags:
+      - game week page
+      summary: show all game week details
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/weekGames'
+        "404":
+          description: could'nt retrieve the data
+  /playerPage:
+    get:
+      tags:
+      - playerPage
+      summary: show player details
+      responses:
+        "200":
+          description: player details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/playerDetails'
+        "404":
+          description: details weren't found
+  /coachPage:
+    get:
+      tags:
+      - coachPage
+      summary: show coach details
+      responses:
+        "200":
+          description: coach details were shown
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coachDetails'
+        "404":
+          description: details weren't found
+  /addToFavorites:
+    post:
+      tags:
+      - favorites
+      summary: add player to user's favorite players
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/favoritePlayer'
+      responses:
+        "201":
+          description: player was added to favorites list
+        "400":
+          description: problem in server
+  /playerSearch:
+    get:
+      tags:
+      - search
+      summary: player search by name
+      parameters:
+      - name: player's name
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: player's name
+          example: Lionel Messi
+      responses:
+        "200":
+          description: show list of players
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/playersList'
+        "404":
+          description: invald syntax
+  /coachSearch:
+    get:
+      tags:
+      - search
+      summary: search coach by name
+      parameters:
+      - name: coach'es name
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: name of the coach to search
+          example: Pep Guardiola
+      responses:
+        "200":
+          description: list of coaches showed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coachesList'
+        "400":
+          description: problem with server
+  /teamsSearch:
+    get:
+      tags:
+      - search
+      summary: teams search by team name
+      parameters:
+      - name: team name
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: team name
+          example: Barcelona
+      responses:
+        "200":
+          description: teams list shown successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/teamsList'
+        "404":
+          description: invalid syntax
+  /allGames:
+    get:
+      tags:
+      - all games
+      summary: show all games details
+      responses:
+        "200":
+          description: all games details were shown
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gamesList'
+        "404":
+          description: details weren't found
+  /addGamesToSystem:
+    post:
+      tags:
+      - add games to system
+      summary: add games to system
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gamesList'
+      responses:
+        "201":
+          description: game was added to the system
+        "400":
+          description: problem in server
+  /addToGame:
+    post:
+      tags:
+      - add to games
+      summary: add score and event log to games
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gamesList'
+      responses:
+        "201":
+          description: score was added to the game
+        "400":
+          description: problem in server
+components:
+  schemas:
+    Login:
+      type: object
+      properties:
+        username:
+          maxLength: 8
+          minLength: 3
+          type: string
+          description: username must be between 3 to 8 chars and only letters
+          example: abba
+        password:
+          maxLength: 10
+          minLength: 5
+          type: string
+          description: password between 5 to 10 chars, must consist of 1 digit and 1 special char
+          format: password
+          example: 123456!
+      description: user info for login
+    Register:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        username:
+          maxLength: 8
+          minLength: 3
+          type: string
+          description: username must be between 3 to 8 chars and only letters
+          example: abba
+        firstname:
+          type: string
+          description: user first name
+          example: Ron
+        lastname:
+          type: string
+          description: user last name
+          example: Tyntarev
+        country:
+          type: string
+          description: user's country
+          example: Israel
+        password:
+          maxLength: 10
+          minLength: 5
+          type: string
+          description: password between 5 to 10 chars, must consist of 1 digit and 1 special char
+          format: password
+          example: 123456!
+        email:
+          type: string
+          description: user's email
+          format: email
+          example: abc@gmail.com
+        image-url:
+          type: string
+          description: url for user's image
+          format: URL
+          example: https://cloudinary.com/abc
+      description: Model containing user info for register
+    mainPageLeagueDetails:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        leaguename:
+          type: string
+          description: league's name
+          example: SuperLiga
+        currentseason:
+          type: string
+          description: current league's season
+          example: 2020/2021
+        currentstage:
+          type: string
+          description: current stage of current season
+          example: "25"
+        nextplannedgame:
+          $ref: '#/components/schemas/mainPageLeagueDetails_nextplannedgame'
+      description: league name, current season, current stage, next planned game
+    mainPageGames:
+      type: array
+      description: array of 3 favourite games
+      items:
+        $ref: '#/components/schemas/mainPageGames_inner'
+    team:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        players:
+          type: array
+          items:
+            $ref: '#/components/schemas/team_players'
+        coach:
+          $ref: '#/components/schemas/team_coach'
+        games:
+          type: array
+          description: array of all team's games
+          items:
+            $ref: '#/components/schemas/mainPageLeagueDetails_nextplannedgame'
+      description: team's object with all team players, gamed and the coach.
+    weekGames:
+      type: array
+      description: array of all weeks games
+      items:
+        $ref: '#/components/schemas/mainPageGames_inner'
+    playerDetails:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: player's id
+          example: 1
+        full_name:
+          type: string
+          description: full name of the player
+          example: Lionel Messi
+        team_Name:
+          type: string
+          description: name of the player team
+          example: Barcelona
+        pic:
+          type: string
+          description: url of the player's picture
+          example: https://cloudinary.com/abc
+        position_number:
+          type: integer
+          description: position number
+          example: 9
+      description: player's object
+    favoritePlayer:
+      type: integer
+      description: player's id
+    coachDetails:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        full_name:
+          type: string
+          description: full name of the coach
+          example: Pep Guardiola
+        team_Name:
+          type: string
+          description: coach team name
+          example: Manchester City
+        pic:
+          type: string
+          description: url of the coach's picture
+          example: https://cloudinary.com/abc
+      description: coach's object
+    playersList:
+      type: array
+      description: list of players
+      items:
+        $ref: '#/components/schemas/playersList_inner'
+    coachesList:
+      type: array
+      properties:
+        id:
+          type: integer
+          example: 1
+        full_name:
+          type: string
+          description: full name of the coach
+          example: Pep Guardiola
+        team_Name:
+          type: string
+          description: coach team name
+          example: Manchester City
+        pic:
+          type: string
+          description: url of the coach's picture
+          example: https://cloudinary.com/abc
+      description: coach's object
+      items:
+        type: object
+    teamsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/teamsList_inner'
+    gamesList:
+      type: array
+      description: array of all team's games
+      items:
+        $ref: '#/components/schemas/mainPageGames_inner'
+    mainPageLeagueDetails_nextplannedgame_events_schedule:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        date:
+          type: string
+          description: the date of the game
+          example: 5/2/09
+        hour:
+          type: string
+          description: the hour of the game
+          example: "1305"
+        min_in_game:
+          type: integer
+          example: 4
+        event_description:
+          type: string
+          example: goal by messi
+      description: array of all events at the game
+    mainPageLeagueDetails_nextplannedgame:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        hometeam:
+          type: string
+          description: the name of home team
+          example: Real Madrid
+        awayteam:
+          type: string
+          description: the name of away team
+          example: Barcelona
+        date:
+          type: string
+          description: the date of the game
+          example: 5/2/09
+        hour:
+          type: string
+          description: the hour of the game
+          example: "1305"
+        stadium:
+          type: string
+          description: the stadium of the game
+          example: Santiago Bernabeu
+        result:
+          type: string
+          description: the result of the game
+          example: 2-6
+        events_schedule:
+          type: array
+          description: array of all events at the game
+          items:
+            $ref: '#/components/schemas/mainPageLeagueDetails_nextplannedgame_events_schedule'
+      description: game object
+    mainPageGames_inner:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        hometeam:
+          type: string
+          description: the name of home team
+          example: Real Madrid
+        awayteam:
+          type: string
+          description: the name of away team
+          example: Barcelona
+        date:
+          type: string
+          description: the date of the game
+          example: 5/2/09
+        hour:
+          type: string
+          description: the hour of the game
+          example: "1305"
+        stadium:
+          type: string
+          description: the stadium of the game
+          example: Santiago Bernabeu
+        result:
+          type: string
+          description: the result of the game
+          example: 2-6
+        events_schedule:
+          type: array
+          description: array of all events at the game
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              date:
+                type: string
+                description: the date of the game
+                example: 5/2/09
+              hour:
+                type: string
+                description: the hour of the game
+                example: "1305"
+              min_in_game:
+                type: integer
+                example: 4
+              event_description:
+                type: string
+                example: goal by messi
+            description: array of all events at the game
+      description: game object
+    team_players:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: player's id
+          example: 1
+        full_name:
+          type: string
+          description: full name of the player
+          example: Lionel Messi
+        team_Name:
+          type: string
+          description: name of the player team
+          example: Barcelona
+        pic:
+          type: string
+          description: url of the player's picture
+          example: https://cloudinary.com/abc
+        position_number:
+          type: integer
+          description: position number
+          example: 9
+      description: player's object
+    team_coach:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        full_name:
+          type: string
+          description: full name of the coach
+          example: Pep Guardiola
+        team_Name:
+          type: string
+          description: coach team name
+          example: Manchester City
+        pic:
+          type: string
+          description: url of the coach's picture
+          example: https://cloudinary.com/abc
+      description: coach's object
+    playersList_inner:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: player's id
+          example: 1
+        full_name:
+          type: string
+          description: full name of the player
+          example: Lionel Messi
+        team_Name:
+          type: string
+          description: name of the player team
+          example: Barcelona
+        pic:
+          type: string
+          description: url of the player's picture
+          example: https://cloudinary.com/abc
+        position_number:
+          type: integer
+          description: position number
+          example: 9
+      description: player object
+    teamsList_inner:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        players:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: player's id
+                example: 1
+              full_name:
+                type: string
+                description: full name of the player
+                example: Lionel Messi
+              team_Name:
+                type: string
+                description: name of the player team
+                example: Barcelona
+              pic:
+                type: string
+                description: url of the player's picture
+                example: https://cloudinary.com/abc
+              position_number:
+                type: integer
+                description: position number
+                example: 9
+            description: player's object
+        coach:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            full_name:
+              type: string
+              description: full name of the coach
+              example: Pep Guardiola
+            team_Name:
+              type: string
+              description: coach team name
+              example: Manchester City
+            pic:
+              type: string
+              description: url of the coach's picture
+              example: https://cloudinary.com/abc
+          description: coach's object
+        games:
+          type: array
+          description: array of all team's games
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              hometeam:
+                type: string
+                description: the name of home team
+                example: Real Madrid
+              awayteam:
+                type: string
+                description: the name of away team
+                example: Barcelona
+              date:
+                type: string
+                description: the date of the game
+                example: 5/2/09
+              hour:
+                type: string
+                description: the hour of the game
+                example: "1305"
+              stadium:
+                type: string
+                description: the stadium of the game
+                example: Santiago Bernabeu
+              result:
+                type: string
+                description: the result of the game
+                example: 2-6
+              events_schedule:
+                type: array
+                description: array of all events at the game
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    date:
+                      type: string
+                      description: the date of the game
+                      example: 5/2/09
+                    hour:
+                      type: string
+                      description: the hour of the game
+                      example: "1305"
+                    min_in_game:
+                      type: integer
+                      example: 4
+                    event_description:
+                      type: string
+                      example: goal by messi
+                  description: array of all events at the game
+            description: game object
+      description: team's objects with all teams players, gamed and coaches
