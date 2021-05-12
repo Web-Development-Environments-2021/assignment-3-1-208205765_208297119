@@ -421,6 +421,30 @@ components:
           type: string
           description: full name of the player
           example: Lionel Messi
+        common_name:
+          type: string
+          description: nickname of the player
+          example: The Lizard
+        nationality:
+          type: string
+          description: nationality of the player
+          example: Israeli
+        birth_date:
+          type: string
+          description: player's birth date
+          example: 21/01/96
+        birth_Country:
+          type: string
+          description: birth country of the player
+          example: Israel
+        height:
+          type: integer
+          description: player's heigth in cm
+          example: 170
+        weigth:
+          type: integer
+          description: weight of the player
+          example: 70
         team_Name:
           type: string
           description: name of the player team
@@ -441,6 +465,30 @@ components:
           type: string
           description: full name of the coach
           example: Pep Guardiola
+        common_name:
+          type: string
+          description: nickname of the coach
+          example: The Lizard
+        nationality:
+          type: string
+          description: nationality of the coach
+          example: Israeli
+        birth_date:
+          type: string
+          description: coach'es birth date
+          example: 21/01/96
+        birth_Country:
+          type: string
+          description: birth country of the coach
+          example: Israel
+        height:
+          type: integer
+          description: coach'es heigth in cm
+          example: 170
+        weigth:
+          type: integer
+          description: weight of the coach
+          example: 70
         team_Name:
           type: string
           description: coach team name

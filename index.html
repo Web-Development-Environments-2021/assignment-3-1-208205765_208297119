@@ -814,9 +814,15 @@
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
+  "weigth" : 70,
   "full_name" : "Pep Guardiola",
+  "nationality" : "Israeli",
+  "birth_Country" : "Israel",
+  "birth_date" : "21/01/96",
   "team_Name" : "Manchester City",
-  "pic" : "https://cloudinary.com/abc"
+  "pic" : "https://cloudinary.com/abc",
+  "common_name" : "The Lizard",
+  "height" : 170
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -864,11 +870,17 @@
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
+  "weigth" : 70,
   "full_name" : "Lionel Messi",
+  "nationality" : "Israeli",
+  "birth_Country" : "Israel",
+  "birth_date" : "21/01/96",
   "position_number" : 9,
   "team_Name" : "Barcelona",
   "id" : 1,
-  "pic" : "https://cloudinary.com/abc"
+  "pic" : "https://cloudinary.com/abc",
+  "common_name" : "The Lizard",
+  "height" : 170
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -1114,6 +1126,18 @@
     <div class="field-items">
       <div class="param">full_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> full name of the coach </div>
           <div class="param-desc"><span class="param-type">example: Pep Guardiola</span></div>
+<div class="param">common_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> nickname of the coach </div>
+          <div class="param-desc"><span class="param-type">example: The Lizard</span></div>
+<div class="param">nationality (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> nationality of the coach </div>
+          <div class="param-desc"><span class="param-type">example: Israeli</span></div>
+<div class="param">birth_date (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> coach&#x27;es birth date </div>
+          <div class="param-desc"><span class="param-type">example: 21/01/96</span></div>
+<div class="param">birth_Country (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> birth country of the coach </div>
+          <div class="param-desc"><span class="param-type">example: Israel</span></div>
+<div class="param">height (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> coach&#x27;es heigth in cm </div>
+          <div class="param-desc"><span class="param-type">example: 170</span></div>
+<div class="param">weigth (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> weight of the coach </div>
+          <div class="param-desc"><span class="param-type">example: 70</span></div>
 <div class="param">team_Name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> coach team name </div>
           <div class="param-desc"><span class="param-type">example: Manchester City</span></div>
 <div class="param">pic (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> url of the coach&#x27;s picture </div>
@@ -1225,6 +1249,18 @@
           <div class="param-desc"><span class="param-type">example: 1</span></div>
 <div class="param">full_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> full name of the player </div>
           <div class="param-desc"><span class="param-type">example: Lionel Messi</span></div>
+<div class="param">common_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> nickname of the player </div>
+          <div class="param-desc"><span class="param-type">example: The Lizard</span></div>
+<div class="param">nationality (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> nationality of the player </div>
+          <div class="param-desc"><span class="param-type">example: Israeli</span></div>
+<div class="param">birth_date (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> player&#x27;s birth date </div>
+          <div class="param-desc"><span class="param-type">example: 21/01/96</span></div>
+<div class="param">birth_Country (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> birth country of the player </div>
+          <div class="param-desc"><span class="param-type">example: Israel</span></div>
+<div class="param">height (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> player&#x27;s heigth in cm </div>
+          <div class="param-desc"><span class="param-type">example: 170</span></div>
+<div class="param">weigth (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> weight of the player </div>
+          <div class="param-desc"><span class="param-type">example: 70</span></div>
 <div class="param">team_Name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> name of the player team </div>
           <div class="param-desc"><span class="param-type">example: Barcelona</span></div>
 <div class="param">pic (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> url of the player&#x27;s picture </div>
