@@ -341,13 +341,13 @@
   "date" : "5/2/09",
   "result" : "2-6",
   "events_schedule" : [ {
-    "date" : "5/2/09",
+    "date" : "2000-01-23",
     "hour" : "1305",
     "event_description" : "goal by messi",
     "min_in_game" : 4,
     "id" : 1
   }, {
-    "date" : "5/2/09",
+    "date" : "2000-01-23",
     "hour" : "1305",
     "event_description" : "goal by messi",
     "min_in_game" : 4,
@@ -362,13 +362,13 @@
   "date" : "5/2/09",
   "result" : "2-6",
   "events_schedule" : [ {
-    "date" : "5/2/09",
+    "date" : "2000-01-23",
     "hour" : "1305",
     "event_description" : "goal by messi",
     "min_in_game" : 4,
     "id" : 1
   }, {
-    "date" : "5/2/09",
+    "date" : "2000-01-23",
     "hour" : "1305",
     "event_description" : "goal by messi",
     "min_in_game" : 4,
@@ -563,15 +563,15 @@
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>[ {
-  "date" : "5/2/09",
+  "date" : "2000-01-23",
   "result" : "2-6",
   "events_schedule" : [ {
-    "date" : "5/2/09",
+    "date" : "2000-01-23",
     "hour" : "1305",
     "event_description" : "goal by messi",
     "min_in_game" : 4
   }, {
-    "date" : "5/2/09",
+    "date" : "2000-01-23",
     "hour" : "1305",
     "event_description" : "goal by messi",
     "min_in_game" : 4
@@ -581,15 +581,15 @@
   "stadium" : "Santiago Bernabeu",
   "hometeam" : "Real Madrid"
 }, {
-  "date" : "5/2/09",
+  "date" : "2000-01-23",
   "result" : "2-6",
   "events_schedule" : [ {
-    "date" : "5/2/09",
+    "date" : "2000-01-23",
     "hour" : "1305",
     "event_description" : "goal by messi",
     "min_in_game" : 4
   }, {
-    "date" : "5/2/09",
+    "date" : "2000-01-23",
     "hour" : "1305",
     "event_description" : "goal by messi",
     "min_in_game" : 4
@@ -644,15 +644,15 @@
   "mainPageGames" : [ null, null ],
   "leagueDetails" : {
     "nextplannedgame" : {
-      "date" : "5/2/09",
+      "date" : "2000-01-23",
       "result" : "2-6",
       "events_schedule" : [ {
-        "date" : "5/2/09",
+        "date" : "2000-01-23",
         "hour" : "1305",
         "event_description" : "goal by messi",
         "min_in_game" : 4
       }, {
-        "date" : "5/2/09",
+        "date" : "2000-01-23",
         "hour" : "1305",
         "event_description" : "goal by messi",
         "min_in_game" : 4
@@ -726,15 +726,15 @@
     "pic" : "https://cloudinary.com/abc"
   } ],
   "games" : [ {
-    "date" : "5/2/09",
+    "date" : "2000-01-23",
     "result" : "2-6",
     "events_schedule" : [ {
-      "date" : "5/2/09",
+      "date" : "2000-01-23",
       "hour" : "1305",
       "event_description" : "goal by messi",
       "min_in_game" : 4
     }, {
-      "date" : "5/2/09",
+      "date" : "2000-01-23",
       "hour" : "1305",
       "event_description" : "goal by messi",
       "min_in_game" : 4
@@ -744,15 +744,15 @@
     "stadium" : "Santiago Bernabeu",
     "hometeam" : "Real Madrid"
   }, {
-    "date" : "5/2/09",
+    "date" : "2000-01-23",
     "result" : "2-6",
     "events_schedule" : [ {
-      "date" : "5/2/09",
+      "date" : "2000-01-23",
       "hour" : "1305",
       "event_description" : "goal by messi",
       "min_in_game" : 4
     }, {
-      "date" : "5/2/09",
+      "date" : "2000-01-23",
       "hour" : "1305",
       "event_description" : "goal by messi",
       "min_in_game" : 4
@@ -818,7 +818,7 @@
   "full_name" : "Pep Guardiola",
   "nationality" : "Israeli",
   "birth_Country" : "Israel",
-  "birth_date" : "21/01/96",
+  "birth_date" : "2000-01-23",
   "team_Name" : "Manchester City",
   "pic" : "https://cloudinary.com/abc",
   "common_name" : "The Lizard",
@@ -874,7 +874,7 @@
   "full_name" : "Lionel Messi",
   "nationality" : "Israeli",
   "birth_Country" : "Israel",
-  "birth_date" : "21/01/96",
+  "birth_date" : "2000-01-23",
   "position_number" : 9,
   "team_Name" : "Barcelona",
   "id" : 1,
@@ -1130,8 +1130,7 @@
           <div class="param-desc"><span class="param-type">example: The Lizard</span></div>
 <div class="param">nationality (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> nationality of the coach </div>
           <div class="param-desc"><span class="param-type">example: Israeli</span></div>
-<div class="param">birth_date (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> coach&#x27;es birth date </div>
-          <div class="param-desc"><span class="param-type">example: 21/01/96</span></div>
+<div class="param">birth_date (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> coach&#x27;es birth date format: date</div>
 <div class="param">birth_Country (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> birth country of the coach </div>
           <div class="param-desc"><span class="param-type">example: Israel</span></div>
 <div class="param">height (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> coach&#x27;es heigth in cm </div>
@@ -1185,8 +1184,7 @@
     <div class="field-items">
       <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
           <div class="param-desc"><span class="param-type">example: 1</span></div>
-<div class="param">date (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the date of the game </div>
-          <div class="param-desc"><span class="param-type">example: 5/2/09</span></div>
+<div class="param">date (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> the date of the game format: date</div>
 <div class="param">hour (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the hour of the game </div>
           <div class="param-desc"><span class="param-type">example: 1305</span></div>
 <div class="param">min_in_game (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
@@ -1216,8 +1214,7 @@
           <div class="param-desc"><span class="param-type">example: Real Madrid</span></div>
 <div class="param">awayteam (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the name of away team </div>
           <div class="param-desc"><span class="param-type">example: Barcelona</span></div>
-<div class="param">date (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the date of the game </div>
-          <div class="param-desc"><span class="param-type">example: 5/2/09</span></div>
+<div class="param">date (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> the date of the game format: date</div>
 <div class="param">hour (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the hour of the game </div>
           <div class="param-desc"><span class="param-type">example: 1305</span></div>
 <div class="param">stadium (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the stadium of the game </div>
@@ -1231,8 +1228,7 @@
     <h3><a name="mainPage_leagueDetails_nextplannedgame_events_schedule"><code>mainPage_leagueDetails_nextplannedgame_events_schedule</code></a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>array of all events at the game</div>
     <div class="field-items">
-      <div class="param">date (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the date of the game </div>
-          <div class="param-desc"><span class="param-type">example: 5/2/09</span></div>
+      <div class="param">date (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> the date of the game format: date</div>
 <div class="param">hour (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the hour of the game </div>
           <div class="param-desc"><span class="param-type">example: 1305</span></div>
 <div class="param">min_in_game (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
@@ -1253,8 +1249,7 @@
           <div class="param-desc"><span class="param-type">example: The Lizard</span></div>
 <div class="param">nationality (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> nationality of the player </div>
           <div class="param-desc"><span class="param-type">example: Israeli</span></div>
-<div class="param">birth_date (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> player&#x27;s birth date </div>
-          <div class="param-desc"><span class="param-type">example: 21/01/96</span></div>
+<div class="param">birth_date (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> player&#x27;s birth date format: date</div>
 <div class="param">birth_Country (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> birth country of the player </div>
           <div class="param-desc"><span class="param-type">example: Israel</span></div>
 <div class="param">height (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> player&#x27;s heigth in cm </div>
@@ -1350,8 +1345,7 @@
           <div class="param-desc"><span class="param-type">example: Real Madrid</span></div>
 <div class="param">awayteam (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the name of away team </div>
           <div class="param-desc"><span class="param-type">example: Barcelona</span></div>
-<div class="param">date (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the date of the game </div>
-          <div class="param-desc"><span class="param-type">example: 5/2/09</span></div>
+<div class="param">date (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> the date of the game format: date</div>
 <div class="param">hour (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the hour of the game </div>
           <div class="param-desc"><span class="param-type">example: 1305</span></div>
 <div class="param">stadium (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the stadium of the game </div>

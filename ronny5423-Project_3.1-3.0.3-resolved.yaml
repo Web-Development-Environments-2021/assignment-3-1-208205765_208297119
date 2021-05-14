@@ -327,12 +327,14 @@ components:
         username:
           maxLength: 8
           minLength: 3
+          pattern: ^[a-zA-Z]$
           type: string
           description: username must be between 3 to 8 chars and only letters
           example: abba
         password:
           maxLength: 10
           minLength: 5
+          pattern: '[a-zA-Z0-9]'
           type: string
           description: password between 5 to 10 chars, must consist of 1 digit and 1 special char
           format: password
@@ -344,6 +346,7 @@ components:
         username:
           maxLength: 8
           minLength: 3
+          pattern: ^[a-zA-Z]$
           type: string
           description: username must be between 3 to 8 chars and only letters
           example: abba
@@ -362,6 +365,7 @@ components:
         password:
           maxLength: 10
           minLength: 5
+          pattern: '[a-zA-Z0-9]'
           type: string
           description: password between 5 to 10 chars, must consist of 1 digit and 1 special char
           format: password
@@ -432,7 +436,7 @@ components:
         birth_date:
           type: string
           description: player's birth date
-          example: 21/01/96
+          format: date
         birth_Country:
           type: string
           description: birth country of the player
@@ -476,7 +480,7 @@ components:
         birth_date:
           type: string
           description: coach'es birth date
-          example: 21/01/96
+          format: date
         birth_Country:
           type: string
           description: birth country of the coach
@@ -576,7 +580,7 @@ components:
         date:
           type: string
           description: the date of the game
-          example: 5/2/09
+          format: date
         hour:
           type: string
           description: the hour of the game
@@ -602,7 +606,7 @@ components:
         date:
           type: string
           description: the date of the game
-          example: 5/2/09
+          format: date
         hour:
           type: string
           description: the hour of the game
@@ -689,7 +693,7 @@ components:
         date:
           type: string
           description: the date of the game
-          example: 5/2/09
+          format: date
         hour:
           type: string
           description: the hour of the game
@@ -711,7 +715,7 @@ components:
               date:
                 type: string
                 description: the date of the game
-                example: 5/2/09
+                format: date
               hour:
                 type: string
                 description: the hour of the game
@@ -765,7 +769,7 @@ components:
         date:
           type: string
           description: the date of the game
-          example: 5/2/09
+          format: date
         hour:
           type: string
           description: the hour of the game
